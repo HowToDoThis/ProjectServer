@@ -2,6 +2,7 @@
 MP.dll For Future Project. Project by NekoMeow, Forget(VCMOD55), ChiOuDeRen(吃藕的人). Develop by We.
 
 ## Main Focus Of This Project
+- **NOT Supporting Linux and MacOS**
 - **Targeting on CS 1.6 v23b or Build 3266**
 - **Maximum As Possible Performance**
 - **Import AmxmodX Modules Like (Ham Sandwich, Fakemeta, Fun, Orpheu and more)**
