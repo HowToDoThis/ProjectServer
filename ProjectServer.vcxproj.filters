@@ -12,12 +12,24 @@
     <ClCompile Include="Main\dllmain.cpp">
       <Filter>Main</Filter>
     </ClCompile>
+    <ClCompile Include="Main\GetFromEngine.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\Game.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\Client.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="shared\Main.h">
       <Filter>Shared</Filter>
     </ClInclude>
     <ClInclude Include="shared\Classes.h">
+      <Filter>Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\NewEngineCallback.h">
       <Filter>Shared</Filter>
     </ClInclude>
   </ItemGroup>

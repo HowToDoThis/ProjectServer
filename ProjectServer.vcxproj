@@ -95,11 +95,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Main\Client.cpp" />
     <ClCompile Include="Main\dllmain.cpp" />
+    <ClCompile Include="Main\Game.cpp" />
+    <ClCompile Include="Main\GetFromEngine.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="shared\Classes.h" />
     <ClInclude Include="shared\Main.h" />
+    <ClInclude Include="shared\NewEngineCallback.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
