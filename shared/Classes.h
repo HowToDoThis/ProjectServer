@@ -1,6 +1,12 @@
 #ifndef Classes_H
 #define Classes_H
 
+class LogSystem
+{
+public:
+	void Console(const char* msg, ...);
+};
+
 class Engine
 {
 public:

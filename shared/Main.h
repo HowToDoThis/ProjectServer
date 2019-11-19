@@ -1,16 +1,37 @@
 #ifndef Main_H
 #define Main_H
 
-#include <Windows.h>
+#define EXPORT __declspec(dllexport)
 
-#include <extdll.h>
+#include <winsani_in.h>
+#include <windows.h>
+#include <winsani_out.h>
+#include <stdio.h>
+
+typedef float vec_t;
+typedef float vec2_t[2];
+typedef float vec3_t[3];
+typedef float vec4_t[4];
+
+#include <wrect.h>
+#include <interface.h>
+
+typedef int (*pfnUserMsgHook)(const char* pszName, int iSize, void* pbuf);
+
+#include <cdll_int.h>
+#include "cdll_export.h"
+#include <eiface.h>
 #include <cbase.h>
-//#include <eiface.h>
-
 #include <client.h>
+
+#define VIDEOMODE_SOFTWARE 0
+#define VIDEOMODE_OPENGL 1
+#define VIDEOMODE_D3D 2
+
+extern cl_enginefunc_t gEngfuncs;
+
 #include <pm_shared.h>
 
-#include <util.h>
 #include <hlsdkext/UtlVector.h>
 #include <hlsdkext/MemPool.h>
 
@@ -19,25 +40,11 @@
 
 extern ProjectServer server;
 
-typedef enum
-{
-	CLASSNAME
-}
-hash_types_e;
-
-typedef struct hash_item_s
-{
-	entvars_t* pev;
-	struct hash_item_s* next;
-	struct hash_item_s* lastHash;
-	int pevIndex;
-}
-hash_item_t;
-
-extern CUtlVector<hash_item_t> stringsHashTable;
+extern struct cvar_s* developer;
 
 // Enginecallback
 #include "NewEngineCallback.h"
 
-extern void GameDLLInit(void);
+void GameDLLInit(void);
+void ProjectServerInit();
 #endif // !Main_H

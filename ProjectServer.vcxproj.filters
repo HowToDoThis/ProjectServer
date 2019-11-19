@@ -7,6 +7,9 @@
     <Filter Include="Shared">
       <UniqueIdentifier>{b05eabba-d4e3-447b-882c-2c6ef2beffea}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Neko">
+      <UniqueIdentifier>{c0502c96-a4ce-405a-9d2b-1b72b0dcf1f3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main\dllmain.cpp">
@@ -19,6 +22,12 @@
       <Filter>Main</Filter>
     </ClCompile>
     <ClCompile Include="Main\Client.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Neko\ProjectServer.cpp">
+      <Filter>Neko</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\LogSystem.cpp">
       <Filter>Main</Filter>
     </ClCompile>
   </ItemGroup>

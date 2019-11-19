@@ -1,4 +1,4 @@
-#include "Main.h"
+#include "shared/Main.h"
 
 cvar_t* g_psv_gravity, * g_psv_aim;
 cvar_t* g_footsteps;

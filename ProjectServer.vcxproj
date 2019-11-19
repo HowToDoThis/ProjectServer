@@ -54,7 +54,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
-      <AdditionalIncludeDirectories>hlsdk\dlls;hlsdk\engine;hlsdk\common;hlsdk\pm_shared;hlsdk\game_shared;hlsdk\public;.\;shared;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;HLSDK\cl_dll;HLSDK\common;HLSDK\dlls;HLSDK\engine;HLSDK\pm_shared;HLSDK\public;SourceSDK;SourceSDK\tier1;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <SupportJustMyCode>false</SupportJustMyCode>
       <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;VALVE_DLL;CLIENT_WEAPONS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
@@ -76,7 +76,7 @@
       <IntrinsicFunctions>false</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
-      <AdditionalIncludeDirectories>hlsdk\dlls;hlsdk\engine;hlsdk\common;hlsdk\pm_shared;hlsdk\game_shared;hlsdk\public;.\;shared;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;HLSDK\cl_dll;HLSDK\common;HLSDK\dlls;HLSDK\engine;HLSDK\pm_shared;HLSDK\public;SourceSDK;SourceSDK\tier1;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <WholeProgramOptimization>false</WholeProgramOptimization>
       <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;VALVE_DLL;CLIENT_WEAPONS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -99,6 +99,8 @@
     <ClCompile Include="Main\dllmain.cpp" />
     <ClCompile Include="Main\Game.cpp" />
     <ClCompile Include="Main\GetFromEngine.cpp" />
+    <ClCompile Include="Main\LogSystem.cpp" />
+    <ClCompile Include="Neko\ProjectServer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="shared\Classes.h" />

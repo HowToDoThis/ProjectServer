@@ -1,6 +1,8 @@
-#include "Main.h"
+#include "shared/Main.h"
 
+cl_enginefunc_t gEngfuncs;
 ProjectServer server;
+cvar_s* developer = NULL;
 
 BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)
 {
@@ -14,8 +16,12 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)
 	return TRUE;
 }
 
-extern "C" __declspec(dllexport) void GiveFnptrsToDll(enginefuncs_t* pengfuncsFromEngine, globalvars_t* pGlobals)
+extern "C" EXPORT void GiveFnptrsToDll(enginefuncs_t* pengfuncsFromEngine, globalvars_t* pGlobals)
 {
 	memcpy(server.game.gEnginefuncs, pengfuncsFromEngine, sizeof(enginefuncs_t));
 	server.game.gGlobals = pGlobals;
+
+	developer = server.game.gEnginefuncs->pfnCVarGetPointer("developer");
+
+	//ProjectServerInit();
 }
