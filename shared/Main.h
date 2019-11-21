@@ -1,27 +1,25 @@
 #ifndef Main_H
 #define Main_H
 
-#define EXPORT __declspec(dllexport)
+//#define EXPORT __declspec(dllexport)
 
 #include <winsani_in.h>
 #include <windows.h>
 #include <winsani_out.h>
 #include <stdio.h>
 
-typedef float vec_t;
-typedef float vec2_t[2];
-typedef float vec3_t[3];
-typedef float vec4_t[4];
-
 #include <wrect.h>
 #include <interface.h>
+#include "extdll.h"
 
 typedef int (*pfnUserMsgHook)(const char* pszName, int iSize, void* pbuf);
 
 #include <cdll_int.h>
+#include <cdll_dll.h>
 #include "cdll_export.h"
 #include <eiface.h>
-#include <cbase.h>
+#include "util.h"
+#include "cbase.h"
 #include <client.h>
 
 #define VIDEOMODE_SOFTWARE 0

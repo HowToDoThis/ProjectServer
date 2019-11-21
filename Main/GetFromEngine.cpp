@@ -1,5 +1,7 @@
 #include "shared/Main.h"
 
+NEW_DLL_FUNCTIONS gNewDLLFunctions;
+
 static DLL_FUNCTIONS gFunctionTable =
 {
 	GameDLLInit,
@@ -54,38 +56,70 @@ static DLL_FUNCTIONS gFunctionTable =
 	AllowLagCompensation
 };
 
-int GetEntityAPI(DLL_FUNCTIONS* pFunctionTable, int interfaceVersion)
+extern "C"
 {
-	if (!pFunctionTable || interfaceVersion != INTERFACE_VERSION)
-		return 0;
+	int GetEntityAPI(DLL_FUNCTIONS* pFunctionTable, int interfaceVersion)
+	{
+		if (developer->value)
+			server.logSys.Console("GetEntityAPI: iVersion = %d", interfaceVersion);
 
-	memcpy(pFunctionTable, &gFunctionTable, sizeof(DLL_FUNCTIONS));
+		if (!pFunctionTable)
+		{
+			server.logSys.Console("GetEntityAPI: Null pFunctionTable");
+			return 0;
+		}
 
-	return 1;
+		if (interfaceVersion != INTERFACE_VERSION)
+		{
+			server.logSys.Console("GetEntityAPI: Version Mismatch. DLL=%d, API=%d", interfaceVersion, INTERFACE_VERSION);
+			return 0;
+		}
+
+		memcpy(pFunctionTable, &gFunctionTable, sizeof(DLL_FUNCTIONS));
+
+		return 1;
+	}
+
+	CBASE_DLLEXPORT int GetEntityAPI2(DLL_FUNCTIONS* pFunctionTable, int* interfaceVersion)
+	{
+		if (developer->value)
+			server.logSys.Console("GetEntityAPI2: iVersion = %d", interfaceVersion);
+
+		if (!pFunctionTable)
+		{
+			server.logSys.Console("GetEntityAPI2: Null pFunctionTable");
+			return 0;
+		}
+
+		if (*interfaceVersion != INTERFACE_VERSION)
+		{
+			server.logSys.Console("GetEntityAPI2: Version Mismatch. DLL=%d, API=%d", interfaceVersion, INTERFACE_VERSION);
+			*interfaceVersion = INTERFACE_VERSION;
+			return 0;
+		}
+
+		memcpy(pFunctionTable, &gFunctionTable, sizeof(DLL_FUNCTIONS));
+
+		return 1;
+	}
+
 }
 
-void OnFreeEntPrivateData(edict_t* pEnt)
-{
-	CBaseEntity* pEntity = CBaseEntity::Instance(pEnt);
-
-	if (!pEntity)
-		return;
-
-	pEntity->UpdateOnRemove();
-	RemoveEntityHashValue(pEntity->pev, STRING(pEntity->pev->classname), CLASSNAME);
-}
-
-static NEW_DLL_FUNCTIONS gNewDLLFunctions =
-{
-	OnFreeEntPrivateData,
-	NULL,
-	NULL
-};
 
 int GetNewDLLFunctions(NEW_DLL_FUNCTIONS* pFunctionTable, int* interfaceVersion)
 {
-	if (!pFunctionTable || *interfaceVersion != NEW_DLL_FUNCTIONS_VERSION)
+	if (developer->value)
+		server.logSys.Console("GetNewDLL: iVersion = %d", interfaceVersion);
+
+	if (!pFunctionTable)
 	{
+		server.logSys.Console("GetNewDLL: Null pFunctionTable");
+		return 0;
+	}
+
+	if (*interfaceVersion != NEW_DLL_FUNCTIONS_VERSION)
+	{
+		server.logSys.Console("GetNewDLL: Version Mismatch. DLL=%d, API=%d", interfaceVersion, NEW_DLL_FUNCTIONS_VERSION);
 		*interfaceVersion = NEW_DLL_FUNCTIONS_VERSION;
 		return 0;
 	}

@@ -5,6 +5,7 @@ class LogSystem
 {
 public:
 	void Console(const char* msg, ...);
+	void DevCon(const char* msg, ...);
 };
 
 class Engine
@@ -16,8 +17,16 @@ public:
 
 class ProjectServer
 {
+	// Custom Class or Function
+public:
+	LogSystem logSys;
+
+	// Engine
 public:
 	Engine game;
+
+	// Function
+public:
 };
 
 #endif // !Classes_H
