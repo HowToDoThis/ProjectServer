@@ -1,60 +1,7 @@
 #include "shared/Main.h"
 
 NEW_DLL_FUNCTIONS gNewDLLFunctions;
-
-static DLL_FUNCTIONS gFunctionTable =
-{
-	GameDLLInit,
-	DispatchSpawn,
-	DispatchThink,
-	DispatchUse,
-	DispatchTouch,
-	DispatchBlocked,
-	DispatchKeyValue,
-	DispatchSave,
-	DispatchRestore,
-	DispatchObjectCollsionBox,
-	SaveWriteFields,
-	SaveReadFields,
-	SaveGlobalState,
-	RestoreGlobalState,
-	ResetGlobalState,
-	ClientConnect,
-	ClientDisconnect,
-	ClientKill,
-	ClientPutInServer,
-	ClientCommand,
-	ClientUserInfoChanged,
-	ServerActivate,
-	ServerDeactivate,
-	PlayerPreThink,
-	PlayerPostThink,
-	StartFrame,
-	ParmsNewLevel,
-	ParmsChangeLevel,
-	GetGameDescription,
-	PlayerCustomization,
-	SpectatorConnect,
-	SpectatorDisconnect,
-	SpectatorThink,
-	Sys_Error,
-	PM_Move,
-	PM_Init,
-	PM_FindTextureType,
-	SetupVisibility,
-	UpdateClientData,
-	AddToFullPack,
-	CreateBaseline,
-	RegisterEncoders,
-	GetWeaponData,
-	CmdStart,
-	CmdEnd,
-	ConnectionlessPacket,
-	GetHullBounds,
-	CreateInstancedBaselines,
-	InconsistentFile,
-	AllowLagCompensation
-};
+DLL_FUNCTIONS gEntityInterface;
 
 extern "C"
 {
@@ -75,7 +22,7 @@ extern "C"
 			return 0;
 		}
 
-		memcpy(pFunctionTable, &gFunctionTable, sizeof(DLL_FUNCTIONS));
+		memcpy(pFunctionTable, &gEntityInterface, sizeof(DLL_FUNCTIONS));
 
 		return 1;
 	}
@@ -98,11 +45,10 @@ extern "C"
 			return 0;
 		}
 
-		memcpy(pFunctionTable, &gFunctionTable, sizeof(DLL_FUNCTIONS));
+		memcpy(pFunctionTable, &gEntityInterface, sizeof(DLL_FUNCTIONS));
 
 		return 1;
 	}
-
 }
 
 

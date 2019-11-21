@@ -7,6 +7,7 @@
 #include <windows.h>
 #include <winsani_out.h>
 #include <stdio.h>
+#include <direct.h>
 
 #include <wrect.h>
 #include <interface.h>
@@ -44,5 +45,4 @@ extern struct cvar_s* developer;
 #include "NewEngineCallback.h"
 
 void GameDLLInit(void);
-void ProjectServerInit();
 #endif // !Main_H

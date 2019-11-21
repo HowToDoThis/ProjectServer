@@ -16,12 +16,17 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)
 	return TRUE;
 }
 
-extern "C" EXPORT void GiveFnptrsToDll(enginefuncs_t* pengfuncsFromEngine, globalvars_t* pGlobals)
+extern "C" EXPORT void GiveFnptrsToDll(enginefuncs_t * pengfuncsFromEngine, globalvars_t * pGlobals)
 {
-	memcpy(server.game.gEnginefuncs, pengfuncsFromEngine, sizeof(enginefuncs_t));
+	server.game.gEnginefuncs = pengfuncsFromEngine;
 	server.game.gGlobals = pGlobals;
 
 	developer = server.game.gEnginefuncs->pfnCVarGetPointer("developer");
+
+	if (server.LoadMP())
+		server.game.gEnginefuncs->pfnAlertMessage(at_warning, "LoadMP = true");
+	else
+		server.game.gEnginefuncs->pfnAlertMessage(at_warning, "LoadMP = false");
 
 	//ProjectServerInit();
 }

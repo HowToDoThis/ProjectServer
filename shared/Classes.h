@@ -27,6 +27,10 @@ public:
 
 	// Function
 public:
+	HINSTANCE LoadLib(const char* dllFileName);
+	FARPROC GetAddress(HINSTANCE handle, const char* string);
+	bool LoadMP();
+	void ProjectServerInit();
 };
 
 #endif // !Classes_H
