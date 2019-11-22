@@ -31,8 +31,13 @@ extern cl_enginefunc_t gEngfuncs;
 
 #include <pm_shared.h>
 
-#include <hlsdkext/UtlVector.h>
-#include <hlsdkext/MemPool.h>
+// Due Some API Problems, we need a struct thingy for ProjectServer
+typedef struct
+{
+	DLL_FUNCTIONS* oldAPI;
+	NEW_DLL_FUNCTIONS* newAPI;
+}API;
+
 
 // Custom Class
 #include "Classes.h"
@@ -40,6 +45,8 @@ extern cl_enginefunc_t gEngfuncs;
 extern ProjectServer server;
 
 extern struct cvar_s* developer;
+
+typedef void (WINAPI* GiveToEngine)(enginefuncs_t* pengfuncsFromEngine, globalvars_t* pGlobals);
 
 // Enginecallback
 #include "NewEngineCallback.h"

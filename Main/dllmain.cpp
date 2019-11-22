@@ -23,10 +23,5 @@ extern "C" EXPORT void GiveFnptrsToDll(enginefuncs_t * pengfuncsFromEngine, glob
 
 	developer = server.game.gEnginefuncs->pfnCVarGetPointer("developer");
 
-	if (server.LoadMP())
-		server.game.gEnginefuncs->pfnAlertMessage(at_warning, "LoadMP = true");
-	else
-		server.game.gEnginefuncs->pfnAlertMessage(at_warning, "LoadMP = false");
-
-	//ProjectServerInit();
+	server.Init();
 }
